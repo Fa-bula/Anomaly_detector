@@ -1,8 +1,10 @@
 <head>
     <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" media="screen">
     <title>
-        Link Cutter
+        AnomalyDetector
     </title>
+
 </head>
 
 <body>
@@ -11,12 +13,12 @@
 <div class="row">
   <div class="col-md-3 col-md-offset-3">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">LinkCutter</a>
+      <a class="navbar-brand" href="/">AnomalyDetector</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/recent">Short Links</a></li>
+        <li><a href="/about/">About us</a></li>
       </ul>
     </div>
     </div>
@@ -32,15 +34,10 @@
 </div>
 </div>
 
-<div class="container-fluid">
-<div class="row">
-    {% block URL %}{% endblock %}
-</div>
-</div>
-
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+{% block scripts %}{% endblock %}
 </body>
