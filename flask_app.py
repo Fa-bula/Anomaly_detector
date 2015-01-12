@@ -6,9 +6,9 @@ from os import listdir
 from os.path import isfile, join
 
 id = 0
-UPLOAD_FOLDER = './data/'
+UPLOAD_FOLDER = os.path.dirname(os.path.realpath(__file__)) + '/data/'
 ALLOWED_EXTENSIONS = set(['txt', 'csv'])
-DESC_FOLDER = './static/txt/'
+DESC_FOLDER = os.path.dirname(os.path.realpath(__file__)) + '/static/txt/'
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
