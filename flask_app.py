@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug import secure_filename
 import os
@@ -5,9 +6,9 @@ from os import listdir
 from os.path import isfile, join
 
 id = 0
-UPLOAD_FOLDER = '/home/anomaly/Anomaly_detection/data/'
+UPLOAD_FOLDER = './data/'
 ALLOWED_EXTENSIONS = set(['txt', 'csv'])
-DESC_FOLDER = '/home/anomaly/Anomaly_detection/static/txt/'
+DESC_FOLDER = './static/txt/'
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
