@@ -26,6 +26,8 @@ def home():
         with open(join(DESC_FOLDER, file), 'r') as f:
             descriptions.append(f.read())
         names.append(file)
+   # names = [u'1', u'2']
+    #descriptions = [u'one', u'two']
     return render_template('home.html', descriptions=descriptions, names=names)
 
 

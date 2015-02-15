@@ -1,0 +1,3 @@
+kernel density estimation (KDE) is a non-parametric way to estimate the probability density function of a random variable. Kernel density estimation is a fundamental data smoothing 
+problem where inferences about the population are made, based on a finite data sample. In some fields such as signal processing and econometrics it is also termed the Parzen-Rosenblatt 
+window method, after Emanuel Parzen and Murray Rosenblatt, who are usually credited with independently creating it in its current form
