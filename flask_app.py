@@ -4,7 +4,8 @@ from werkzeug import secure_filename
 import os
 from os import listdir
 from os.path import isfile, join
-
+import sys
+import pandas
 id = 0
 UPLOAD_FOLDER = os.path.dirname(os.path.realpath(__file__)) + '/data/'
 ALLOWED_EXTENSIONS = set(['txt', 'csv'])
@@ -36,14 +37,32 @@ def upload():
     if request.method == 'POST':
         file = request.files['file']
         if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('home'))
+            filename = os.path.join(app.config['UPLOAD_FOLDER'],  secure_filename(file.filename))
+            method = request.form["method"]
+            file.save(filename)
+            df = pandas.io.parsers.read_csv(filename)
+            arr = df.values
+            if method == 'svm':
+                return svm.svm(arr)
+            if method == 'ellipticenvelope':
+                return ellipticenvelope.ellipticenvelope(arr)
+            if method == 'gaussianmixture':
+                return gaussianmixture.gaussianmixture(arr)
+            if method == 'kerneldensity':
+                return kerneldensity.kerneldensity(arr)
+            return 'unknown error'
         else:
             return "expected .csv or .txt"
 
 @app.route("/about/")
 def about():
     return render_template('about.html')
+
 if __name__ == "__main__":
+    sys.path.append('../AD/')
+    import svm
+    import ellipticenvelope
+    import gaussianmixture
+    import kerneldensity
     app.run(debug=True)
+    

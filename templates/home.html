@@ -4,15 +4,15 @@
 <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data" class="form-horizontal">
   <div class="form-group">
     <label>Anomaly detection method</label>
-    <select class="form-control" id="select_method">
+    <select class="form-control" id="select_method" name="method">
       {% for name in names %}
-      <option value={{loop.index}}>{{ name }}</option>
+      <option value={{ name }}>{{ name }}</option>
       {% endfor %}
     </select>
   </div>
   {% for desc in descriptions %}
   <div class="form-group hide">
-    <div class="alert alert-info" role="alert" id="desc-{{loop.index}}">{{ desc }}</div>
+    <div class="alert alert-info" role="alert" id="desc-{{names[loop.index - 1]}}">{{ desc }}</div>
   </div>
   {% endfor %}
   
@@ -20,7 +20,7 @@
     <input type="file" name="file" required>
   </div>
   <div class="form-group">
-    <input type="submit" value="Upload">
+    <button type="submit" class="btn btn-default">Upload</button>
   </div>
 </form>
 
